@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>College Details</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #main {
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input[type='text'] {
+            width: 30%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 2px solid black;
+        }
+
+        input[type='submit'] {
+            width: 30%;
+            padding: 5px;
+            background: black;
+            color: white;
+            text-transform: uppercase;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <h1>College Details Grabber</h1>
+    <form method="GET" autocomplete="off">
+        <div>
+            <label for="clg_name"></label>
+            <input type="text" id="clg_name" value="{{ request.GET.clg_name }}" placeholder="Enter College Name" name="clg_name"/>
+        </div>
+        <input type="submit" value="Submit"/>
+    </form>
+    {% if result %}
+        <h3><b>College Name which was searched → {{ result.clg }}</b></h3><br>
+        <h3>Description:</h3>
+        <h4>{{ result.desc }}</h4><br>
+    <h3>ᐁᐁᐁ To get the Location of the College Click Below ᐁᐁᐁ</h3><br>
+        <a href="{{ result.map }}">{{ result.map }}</a>
+    {% endif %}
+</div>
+</body>
+</html>
