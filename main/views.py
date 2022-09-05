@@ -27,9 +27,9 @@ def home(request):
         soup = BeautifulSoup(html_content, 'lxml')
         result = dict()
         # extract region
-        result['clg'] = soup.find("div", attrs={"class": "BNeawe deIvCb AP7Wnd"}).text
+        result['clg'] = soup.find("span", attrs={"class": "ellip"}).text
         # extract temperature now
-        result['desc'] = soup.find("div", attrs={"class": "BNeawe s3v9rd AP7Wnd"}).text
+        result['desc'] = soup.find("div", attrs={"class": "kno-rdesc"}).text
         # get the day, hour and actual weather
-        result['map'] = soup.find('div',class_="skVgpb").a['href']
+        result['map'] = soup.find('span',class_="w8qArf").a['href']
     return render(request, 'core/home.html', {'result': result})
